@@ -1,44 +1,97 @@
-import './App.scss'
-import Type from './Type'
-import { Link } from 'react-router-dom'
+import { useState } from 'react';
+import './App.scss';
+import Type from './Type';
+import { Link } from 'react-router-dom';
 
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen); // Toggle the menu visibility on small screens
+  };
 
   return (
     <>
       <div className="w-full h-screen bg-slate-900">
-{/*-------------------- navbar ----------------- */}
-        <div className="w-full h-16  flex items-center font-serif justify-between text-indigo-200 ">
+        {/*-------------------- navbar ----------------- */}
+        <div className="w-full h-16 flex items-center font-serif justify-between text-indigo-200 px-5">
+          {/* Logo Section */}
           <div className="ml-5">
-            <h1 className="text-3xl font-bold	"> </h1>
+            <h1 className="text-3xl font-bold"> </h1>
           </div>
-          <div className="space-x-14 mr-5">
+
+          {/* Navbar Links (For Larger Screens) */}
+          <div className="hidden md:flex space-x-14 mr-5">
             <a href="#home"><span className="nav">Home</span></a>
             <a href="#about"><span className="nav">About</span></a>
             <a href="#skills"><span className="nav">Skills</span></a>
             <a href="#projects"><span className="nav">Projects</span></a>
             <a href="#contact"><span className="nav">Contact</span></a>
-           
           </div>
 
+          {/* Hamburger Icon for Small Screens */}
+          <div className="md:hidden flex items-center" onClick={toggleMenu}>
+            <button className="text-white focus:outline-none">
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu (Visible on small screens) */}
+        <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} bg-slate-800`}>
+          <a href="#home" className="block text-white px-5 py-2">Home</a>
+          <a href="#about" className="block text-white px-5 py-2">About</a>
+          <a href="#skills" className="block text-white px-5 py-2">Skills</a>
+          <a href="#projects" className="block text-white px-5 py-2">Projects</a>
+          <a href="#contact" className="block text-white px-5 py-2">Contact</a>
         </div>
 {/*---------------- Home -------------------------*/}
-        <div className="flex w-full h-full bg-slate-900" id='home'>
-     
-          <div className="w-3/4  flex justify-center items-center text-left  ">
+      <div className="flex flex-col md:flex-row w-full h-full bg-slate-900" id='home'>
+          <div className="w-full md:w-3/4 flex justify-center items-center text-left px-5">
             <div className="text-white ml-10">
-            {/* <h1 className="text-3xl  mb-5 text-slate-300">Hi There...👻!!</h1> */}
-            <h1 className="sm: text-4xl mb-9  md:text-6xl mb-12 lg:text-8xl mb-16">I'm <span className="bg-clip-text font-thin text-transparent bg-gradient-to-r from-pink-500 to-violet-500">GOPIKA K</span></h1>
-            <h1 className="sm:text xl    md:text-2xl   lg:text-3xl font-semibold bg-clip-text text-transparent bg-gradient-to-r  from-violet-500 to-white "><Type /></h1>
-            <p className='w-3/5 mt-10 text-violet-200 text-md '>I'm creative developer based in India,and I'm very passionate and dedicated to my work.</p>
+              <h1 className="text-4xl sm:text-6xl lg:text-8xl mb-12">I'm <span className="bg-clip-text font-thin text-transparent bg-gradient-to-r from-pink-500 to-violet-500">GOPIKA K</span></h1>
+              <h1 className="text-xl sm:text-2xl lg:text-3xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-white "><Type /></h1>
+              <p className='mt-10 text-violet-200 text-md w-full md:w-3/5'>
+                I'm a creative developer based in India, and I'm very passionate and dedicated to my work.
+              </p>
+              <div className="socialContainer">
+              <div className="socialIcon">
+                <a href="https://github.com/gopikakaruthodi">
+                <img src="./github (1).png" alt=""  className='w-10 h-10 object-cover border-slate-900 p-0.5 mx-2 border rounded-full' />
+                </a>
+              </div>
+              <div className="socialIcon">
+                <img src="./linkedin.png" alt=""  className='w-10 h-10 object-cover border-slate-900  p-0.5 mx-2 border rounded-full' />
+              </div>
+              {/* <div className="socialIcon">
+                <img src="./instagram (1).png" alt=""  className='w-10 h-10 object-cover border-slate-900  p-0.5 mx-2 border rounded-full' />
+              </div> */}
+              {/* <div className="socialIcon">
+                <img src="./instagram (1).png" alt=""  className='w-10 h-10 object-cover border-slate-900  p-0.5 mx-2 border rounded-full' />
+              </div> */}
+              
+            </div>
             </div>
           </div>
-          <div className="w-2/5 h-full text-white flex justify-start items-center mr-10">
+          <div className="w-full md:w-2/5 flex justify-center items-center mr-10">
             <div className="profile"></div>
           </div>
         </div>
 {/* -------------------About------------------- */}
-        <div className="w-full  bg-slate-900 text-white  pt-10" id='about'>
+        <div className="w-full  bg-slate-900 text-white  pt-10 pb-40" id='about'>
           <div className='grid items-center justify-center'>
           <h1 className="text-6xl font-bold  text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-indigo-700 via-pink-400 to-violet-600" >ABOUT ME</h1>
             <img src="./down-arrow.png" alt="" className='w-12 border-violet-400 ml-24 animate-bounce border-2 rounded-full p-2 mb-10 ml-32' />
@@ -55,14 +108,14 @@ function App() {
 
         </div>
         {/* Skills */}
-        <div className='w-full bg-slate-900 py-2 flex flex-wrap justify-center items-center pb-16' id='skills'>
+        <div className='w-full bg-slate-900 py-2 grid content-center items-center  pb-36' id='skills'>
           <div className='body'>
             <div className="box">
               <div className="border-line"></div>
               <div className="form">SKILLS</div>
             </div>
           </div>
-          <div className='wrapper '>
+          <div className='wrapper'>
             <div className='w-28 h-28 border rounded-xl border-violet-400 p-1' >
               <img src="./html-5.png" alt="" className='w-full h-3/4 object-cover p-1' />
               <p className='text-white text-sm font-bold text-center'>HTML</p>
@@ -103,8 +156,8 @@ function App() {
               <img src="./sass.png" alt="" className='w-full h-3/4 object-cover p-1' />
               <p className='text-white text-sm font-bold text-center'>SASS</p>
             </div>
-            <div className='w-28 h-28 border rounded-xl border-violet-400 p-1'>
-              <img src="./vitejs.png" alt="" className='w-full h-3/4  p-1' />
+            <div className='w-28 h-28 border rounded-xl object-cover border-violet-400 p-1'>
+              <img src="./api.png" alt="" className='w-full h-3/4  p-1 ' />
               <p className='text-white text-sm font-bold text-center'>VITE</p>
             </div>
             <div className='w-28 h-28 border rounded-xl border-violet-400 p-1'>
@@ -198,12 +251,12 @@ function App() {
               <div className="socialIcon">
                 <img src="./linkedin.png" alt=""  className='w-10 h-10 object-cover border-slate-900  p-0.5 mx-2 border rounded-full' />
               </div>
-              <div className="socialIcon">
+              {/* <div className="socialIcon">
                 <img src="./instagram (1).png" alt=""  className='w-10 h-10 object-cover border-slate-900  p-0.5 mx-2 border rounded-full' />
-              </div>
-              <div className="socialIcon">
+              </div> */}
+              {/* <div className="socialIcon">
                 <img src="./instagram (1).png" alt=""  className='w-10 h-10 object-cover border-slate-900  p-0.5 mx-2 border rounded-full' />
-              </div>
+              </div> */}
               
             </div>
           </div>

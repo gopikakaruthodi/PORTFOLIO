@@ -28,9 +28,9 @@
 
 
 .body{
-    min-height: 90vh;
+    min-height: 40vh;
     display: flex;
-    align-items: center;
+    // align-items: center;
     justify-content: center;
     
 }
@@ -131,13 +131,14 @@
 
 .wrapper{
     // w-3/4 grid grid-cols-4 gap-3  justify-center items-center p-9 
-    width: 70%;
+    width: 85%;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 15px;
-    padding-left:96px;
     justify-content: center;
     align-items: center;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
+    padding-left:356px;
+
 
 }
 
@@ -366,7 +367,7 @@ justify-content: space-between;
 
 
 
-  @media (min-width:400px) and (max-width:575.98px){
+  @media (min-width:300px) and (max-width:575.98px){
     .profile{
       width: 200px;
       height: 200px;
@@ -378,7 +379,16 @@ justify-content: space-between;
     }
     .wrapper{
         grid-template-columns: repeat(1, minmax(0, 1fr));
+      padding-left: 130px;
+
          
+        }
+        .LinkItem{
+          font-size: 13px;
+          line-height: 13px;
+          margin-bottom: 8px;
+          display: flex;
+          align-items: center;
         }
     
   }
@@ -394,6 +404,8 @@ justify-content: space-between;
     }
     .wrapper{
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-left: 190px;
+
      
     }
     .comb{
