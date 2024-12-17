@@ -87,7 +87,7 @@ function App() {
             </div>
           </div>
           <div className="w-full md:w-2/5 flex justify-center items-center mr-10">
-            <div className="profile"></div>
+            <img src="./profile.jpg" alt="" className='profile' />
           </div>
         </div>
 {/* -------------------About------------------- */}
