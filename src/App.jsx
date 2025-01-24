@@ -86,7 +86,7 @@ function App() {
             </div>
             </div>
           </div>
-          <div className="w-full md:w-2/5 flex justify-center items-center mr-10">
+          <div className="w-full md:w-2/5 flex justify-center items-center mr-10 sm:pt-20">
             <img src="./profile.jpg" alt="" className='profile' />
           </div>
         </div>
@@ -107,7 +107,7 @@ function App() {
           </div>
 
         </div>
-        {/* Skills */}
+        {/* Skills ------------------------------------ */}
         <div className='w-full bg-slate-900 py-2 grid content-center items-center  pb-36' id='skills'>
           <div className='body'>
             <div className="box">
@@ -178,6 +178,7 @@ function App() {
             <img src="./down-arrow.png" alt="" className='w-12 border-violet-400 ml-24 animate-bounce border-2 rounded-full p-2' />
           </div>          
           <div className=' flex flex-wrap  justify-center items-center gap-16 mt-16'>
+          <a href="https://github.com/gopikakaruthodi/Olx">
             <div className='card'>
             {/* <h1 className='text-xl font-bold text-white text-center'>OLX CLONE</h1> */}
                 <div className="image-box">
@@ -188,6 +189,8 @@ function App() {
                   <p>A web application built using Express.js that provides secure user authentication features, including registration, login, and session management.Allows new users to create an account with email verification.Implements JWT (JSON Web Tokens) for secure user authentication.</p>
                 </div>
             </div>
+            </a>
+            <a href="https://github.com/gopikakaruthodi/Express-donor">
             <div className='card'>
             {/* <h1 className='text-xl font-bold text-white text-center'>DONOR SYSTEM</h1> */}
                 <div className="image-box">
@@ -199,6 +202,8 @@ function App() {
                   Secure sign-in and sign-out process ensuring privacy and data protection for all users.</p>
                 </div>
             </div>
+            </a>
+            <a href="https://github.com/gopikakaruthodi/REACT-INSTA">
             <div className='card'>
               {/* <h1 className='text-xl font-bold text-white text-center'>INSTA CLONE</h1> */}
                 <div className="image-box">
@@ -209,6 +214,7 @@ function App() {
                   <p>This web that mimics the essential features of the original platform. Users can create accounts, log in securely, and verify their email addresses. Once authenticated, they can view and manage their personal profiles, including uploading and editing photos. The web also provides a feed where users can explore posts from other members of the community.</p>
                 </div>
             </div>
+            </a>
           </div>
         </div>
 
