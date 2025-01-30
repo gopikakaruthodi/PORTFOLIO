@@ -378,8 +378,8 @@ justify-content: space-between;
 
     }
     .wrapper{
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-      padding-left: 130px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      padding-left: 70px;
 
          
         }
@@ -462,6 +462,7 @@ justify-content: space-between;
     }
     .wrapper{
       grid-template-columns: repeat(3, minmax(0, 1fr));
+      padding-left: 200px;
        
       }
       .comb{
@@ -496,4 +497,12 @@ justify-content: space-between;
       display: flex;
     }
   }
+
+  @media (min-width:992px) and (max-width:1250.98px){
+    .wrapper{
+      padding-left:266px;
+
+    }
+  }
+
     
