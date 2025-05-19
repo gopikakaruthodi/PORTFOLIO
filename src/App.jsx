@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.scss';
 import Type from './Type';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,6 +10,31 @@ function App() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen); // Toggle the menu visibility on small screens
   };
+
+  const motionLeftVariant={
+    hidden:{
+      opacity: 0, x: -310 
+    },
+    visible:{
+      opacity: 1, x: 0,
+      transition:{ duration: 1 }
+
+    },
+    viewport:{ once: false, amount: 0.3 } // Ensures animation triggers when 30% of the div is visible
+
+  }
+  const motionRightVariant={
+    hidden:{
+      opacity: 0, x: 310 
+    },
+    visible:{
+      opacity: 1, x: 0,
+      transition:{ duration: 1 }
+
+    },
+    viewport:{ once: false, amount: 0.3 } // Ensures animation triggers when 30% of the div is visible
+
+  }
 
   return (
     <>
@@ -21,13 +47,17 @@ function App() {
           </div>
 
           {/* Navbar Links (For Larger Screens) */}
-          <div className="hidden md:flex space-x-14 mr-5">
+          <motion.div 
+          initial={{ opacity: 0, y: -350 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, type:'spring', stiffness:100 }}
+          className="hidden md:flex space-x-14 mr-5">
             <a href="#home"><span className="nav">Home</span></a>
             <a href="#about"><span className="nav">About</span></a>
             <a href="#skills"><span className="nav">Skills</span></a>
             <a href="#projects"><span className="nav">Projects</span></a>
             <a href="#contact"><span className="nav">Contact</span></a>
-          </div>
+          </motion.div>
 
           {/* Hamburger Icon for Small Screens */}
           <div className="md:hidden flex items-center" onClick={toggleMenu}>
@@ -74,7 +104,9 @@ function App() {
                 </a>
               </div>
               <div className="socialIcon">
+                <a href="https://www.linkedin.com/in/gopika-k-36b83a337">
                 <img src="./linkedin.png" alt=""  className='w-10 h-10 object-cover border-slate-900  p-0.5 mx-2 border rounded-full' />
+                </a>
               </div>
               {/* <div className="socialIcon">
                 <img src="./instagram (1).png" alt=""  className='w-10 h-10 object-cover border-slate-900  p-0.5 mx-2 border rounded-full' />
@@ -91,22 +123,45 @@ function App() {
           </div>
         </div>
 {/* -------------------About------------------- */}
-        <div className="w-full  bg-slate-900 text-white  pt-10 pb-40" id='about'>
-          <div className='grid items-center justify-center'>
-          <h1 className="text-6xl font-bold  text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-indigo-700 via-pink-400 to-violet-600" >ABOUT ME</h1>
-            <img src="./down-arrow.png" alt="" className='w-12 border-violet-400 ml-24 animate-bounce border-2 rounded-full p-2 mb-10 ml-32' />
-          
-          </div>
-          <div className="w-full flex justify-center flex-wrap">
-            <div className="w-1/4 p-12 shadow-lg shadow-violet-500/40 m-5 text-center rounded-lg basis-96 ">Hi Everyone, I am Gopika k from Malappuram, Kerala.I am a web developer with six months of experience in the <span className=' text-sm text-violet-200'>MERN
-            stack (MongoDB, Express.js,React and Node.js)</span>, complemented by strong
-            skills in <span  className='text-sm text-violet-200'>HTML, CSS, and JavaScript</span>. 
-            </div>
-            <div className="w-1/4 p-14 shadow-lg shadow-violet-500/40 m-5 rounded-lg  basis-96 text-center ">I'm BSc Computer Science Graduate from Calicut University.and i'm very passionate and dedicated to work.I enjoy problem-solving and am
-            always eager to learn new technologies and best practices.</div>
-          </div>
+<div className="w-full bg-slate-900 text-white pt-10 pb-40 min-h-screen" id="about">
+      <div className="grid items-center justify-center">
+        <h1 className="text-6xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-indigo-700 via-pink-400 to-violet-600">
+          ABOUT ME
+        </h1>
+        <img
+          src="./down-arrow.png"
+          alt="Arrow"
+          className="w-12 border-violet-400 animate-bounce border-2 rounded-full p-2 mb-10 ml-32"
+        />
+      </div>
 
-        </div>
+      <div className="w-full flex justify-center flex-wrap">
+        <motion.div
+          variants={motionLeftVariant}
+          initial='hidden'
+          whileInView="visible"
+          viewport="viewport"
+          className="w-1/4 p-12 shadow-lg shadow-violet-500/40 m-5 text-center rounded-lg basis-96"
+        >
+          Hi Everyone, I am Gopika K from Malappuram, Kerala. I am a web developer with six months of experience in the{" "}
+          <span className="text-sm text-violet-200">
+            MERN stack (MongoDB, Express.js, React, and Node.js)
+          </span>, complemented by strong skills in{" "}
+          <span className="text-sm text-violet-200">HTML, CSS, and JavaScript</span>.
+        </motion.div>
+
+        <motion.div
+           variants={motionRightVariant}
+           initial='hidden'
+           whileInView="visible"
+           viewport="viewport"
+          className="w-1/4 p-14 shadow-lg shadow-violet-500/40 m-5 rounded-lg basis-96 text-center"
+        >
+          I'm a BSc Computer Science graduate from Calicut University, and I'm very passionate and dedicated to my work.
+          I enjoy problem-solving and am always eager to learn new technologies and best practices.
+        </motion.div>
+      </div>
+    </div>
         {/* Skills ------------------------------------ */}
         <div className='w-full bg-slate-900 py-2 grid content-center items-center  pb-36' id='skills'>
           <div className='body'>
